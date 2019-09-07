@@ -1,0 +1,39 @@
+
+	body{
+	background-image:url(foto_1.jpg);
+	background-attachment: fixed;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: #000;
+	}	
+	#campo{
+	background-color: #000;
+	height: 300px;
+	width: 600px;
+	}
+	#campo2{
+	background-color: #000;
+	height: 40px;
+	width: 600px;
+	}
+	.texto{
+	color: white;
+	}
+	.home{
+	font-size: 30px;
+	margin-top: 10px;
+	color: black,
+	}
+#bemvindo{
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 40px;
+	letter-spacing: 0px;
+	word-spacing: 2px;
+	color: #FFFFEB;
+	font-weight: 400;
+	text-decoration: none solid rgb(68, 68, 68);
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-shadow: -9px 4px 5px #1C0BFF;
+}

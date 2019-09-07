@@ -1,0 +1,93 @@
+
+<html>
+    <title>Meus Pedidos</title>
+    <head>
+	<style>
+	body{
+	background-image:url(foto_1.jpg);
+	background-attachment: fixed;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: #000;
+	}	
+	#campo{
+	background-color: #000;
+	height: 150	px;
+	width: 100%;
+	}
+	#campo2{
+	background-color: #000;
+	height: 140px;
+	width: 100%;
+	}
+	.texto{
+	color: white;
+	font-size: 25px;
+	}
+	.texto2{
+	color: white;
+	}
+	.home{
+	font-size: 30px;
+	margin-top: 10px;
+	color: white,
+	}
+</style>
+	</head>
+    <body>
+        <?php
+        include "config.php";
+session_start();
+if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
+    header("location:login.php");
+    exit;
+    
+}else {
+    //echo"<center>Você esta logado<center> '$CNPJ''";
+    echo"<center>Você esta logado<center>".$_SESSION['CNPJ'];
+   
+}//40044828
+   // 08009704828
+ $sql = "select * from tb_pedidos where cnpjvendedor=".$_SESSION['CNPJ'];
+        $result = mysqli_query($conexao,$sql);
+ ?>
+        <br>
+        <br>
+        <fieldset id="campo">
+            <table border="1"> 
+                <tr>
+                <td class="texto2">Codigo do pedido:</td>
+                <td class="texto2">Codigo Produto</td>
+                <td class="texto2">Quantidade</td>
+                <td class="texto2">Cnpj Vendedor</td>
+                <td class="texto2">Cnpj Cliente</td>
+                    </tr>
+        <?php
+       
+        
+        while($linha = mysqli_fetch_array($result))
+        {?>
+                <tr>
+                <td class="texto2"><?php echo $linha['cod_pedido']?></td>
+                <td class="texto2"><?php echo $linha['codproduto']?></td>
+                      <td class="texto2"><?php echo $linha['quantidade']?></td>
+                      <td class="texto2"><?php echo $linha['cnpjvendedor']?></td>
+                      <td class="texto2"><?php echo $linha['cnpjcliente']?></td>
+                </tr>
+                <?php
+            //print "Codigo do pedido:".$linha['cod_pedido']."- Codigo Produto:".$linha['codproduto']."id=".$linha['quantidade']."Cnpj do Vendendor=".$linha['cnpjvendedor']."cnpj Cliente".$linha['cnpjcliente']."<br>";
+           // print "usuario:".$linha['usuario']."- mensagem: ".$linha['mensagem']."id=".$linha['id']." - <a href='excluirconversa.php?id=".$linha['id']."'>-Excluir</a>"."<a href='formeditar.php?id=".$linha['id']."'>-editar</a><br>"; 
+            
+            
+        }
+        
+        mysqli_free_result($result);
+        mysqli_close($conexao);
+        ?>
+                </table>
+            </fieldset>
+        <a class="texto"href="telafornecedor.html">Voltar a tela forncedor</a>
+    <br>
+    <a class="texto"href="logout.php">Sair</a>
+    </body>
+</html>
