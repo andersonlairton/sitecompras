@@ -1,0 +1,26 @@
+php:
+    build: .
+    ports: 
+        - "80:80"
+        - "443:443"
+    volumes: 
+        - ./www/:/var/www/html
+    links: 
+        - bd
+bd:
+    image: mysql:5.7
+    ports: 
+        - "3306:3306"
+    volumes: 
+        - /var/lib/mysql
+    environment: 
+        - MYSQL_ROOT_PASSWORD=password
+        - MYSQL_DATABASE=app_development
+app:
+    image: phpmyadmin/phpmyadmin:latest
+    links: 
+        - bd
+    ports: 
+        - 88:80
+    environment: 
+        - PMA_ARBITRARY=1
