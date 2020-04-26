@@ -1,21 +1,13 @@
 <?php
-include "validaracesso.php";
 
-// $CNPJ = $_REQUEST["CNPJ"]; //pegando dados digitados pelo usuario
-  //  $Senha = $_REQUEST["Senha"];
- 
-//session_start();
-//echo $_SESSION["CNPJ"];
-//die;
-if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
-    header("location:login.php");
-    exit;
+	session_start();
+	if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
+    	header("location:login.php");
+    	exit;
     
-}else {
-    echo"<center>esta merda esta funcionando ".$_SESSION['CNPJ'];
-   // echo"<center>Você esta logado<center> '$CNPJ''";
-   // echo"<center>Você esta logado<center>".$_SESSION['mycnpj'];
-}
+	}else {
+    	echo"<center>";//ao que parece ,o que mantem a pagina centralizada é essa tag
+	}
 
 ?>
 <html>
@@ -28,6 +20,7 @@ if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-color: #000;
+	margin:auto;
 	}	
 	#campo{
 	background-color: #000;
@@ -57,33 +50,23 @@ if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
 	}
 	.home{
 	font-size: 30px;
-	margin-top: 10px;
+	margin: auto;
 	color: black,
 	}
 </style></head>
     <title>Tela fornecedor</title>
     <body>
-        <h1 id="bemvindo">Bem vindo Fornecedor</h1>
-        <fieldset id="campo">
-            <legend class="texto">Fornecedor</legend>
+		<div id="body">
+        	<h1 id="bemvindo">Bem vindo Fornecedor <?=$_SESSION['NOME']?></h1>
+        	<fieldset id="campo">
+            	<legend class="texto">Fornecedor</legend>
             
-        <p><a class="texto" href="produtos.php">Produtos</a></p>
-        <p><a class="texto" href="manutencaocadastro.php">Alterar cadastro</a></p>
-        <p><a  class="texto"href="pedidos.php">Meus pedidos</a></p>
-        <!--<p><a class="texto" href="Clientes.php">Meus clientes</a></p>    
-       <!-- <form action="enviararquivos.php" method="post" enctype="multipart/form-data">
-        <label for="arquivo">arquivo</label>
-            <input type="file" name="arquivo" id="arquivo"></input>
-        <br>
-        <input type="submit" name="submit" value="enviar"></input>
--->
-        
-            
-        
-        
-        </form>
-        </fieldset>
+        		<p><a class="texto" href="produtos.php">Produtos</a></p>
+        		<p><a class="texto" href="editarcadastro.php">Alterar cadastro</a></p>
+        		<p><a  class="texto"href="pedidos.php">Meus pedidos</a></p>
 
-<a class="home"href="logout.php">Sair</a>
+        	</fieldset>
+			<a class="home"href="logout.php">Sair</a>
+		</div>
     </body>
 </html>
