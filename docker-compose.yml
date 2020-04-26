@@ -15,12 +15,17 @@ bd:
         - /var/lib/mysql
     environment: 
         - MYSQL_ROOT_PASSWORD=password
-        - MYSQL_DATABASE=app_development
+        - MYSQL_DATABASE=sitecompras
 app:
     image: phpmyadmin/phpmyadmin:latest
     links: 
         - bd
+    restart: always
     ports: 
         - 88:80
     environment: 
         - PMA_ARBITRARY=1
+    volumes:
+        - /sessions
+        - ~/docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+        - /custom/phpmyadmin/theme/:/www/themes/theme/
