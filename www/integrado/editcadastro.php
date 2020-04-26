@@ -1,36 +1,47 @@
 <?php
+    session_start();
     include "config.php";
-include "manutencaocadastro.php";
-
     
-     
-    $CNPJ=$_POST["CNPJ"];
+
+    $CNPJ=$_SESSION['CNPJ'];
     $Nome=$_POST["Nome"];
     $ENDERECO=$_POST["Endereco"];
     $Telefone=$_POST["Tel"];
     $Email=$_POST["email"];
     $Senha=$_POST["Senha"];
     $Confirma_Senha=$_POST["confirma_Senha"];
-    //$sql = mysql_query("INSERT INTO tb_cliente VALUES('$CNPJ','$Nome','$ENDERECO','$Email','$Telefone','$Senha')") or die(mysql_error());
+    $Nome_Empresa=$_POST["nome_empresa"];
+    
+   /** pesquisar como faz toda esta ação por ajax ou por js para que a pagina nao seja atualizada */
     if($Senha ==$Confirma_Senha){
-   
-  
-  $sql =sprintf("update tb_forncedor_npj SET NOME='$Nome',ENDERECO='$ENDERECO',EMAIL='$Email',TELEFONE='$Telefone',SENHA='$Senha' WHERE CNPJ=$CNPJ"); 
-         //$sql =sprintf("update tb_cliente SET NOME=,ENDERECO,EMAIL,TELEFONE,SENHA) values ('%s','%s','%s','%s','%s','%s')",$Nome,$ENDERECO,$Telefone,$Email,$Senha);
-    
-    
-      if(mysqli_query($conexao,$sql)){
-         //   header("location:index.php");
-           echo "dados inseridos com sucesso";
-        }else{
+        if($_SESSION['Senha']==$Senha){
+            $sql =sprintf("update tb_forncedor_npj SET 
+            NOME='$Nome',
+            ENDERECO='$ENDERECO',
+            EMAIL='$Email',
+            TELEFONE='$Telefone',
+            SENHA='$Senha',
+            NOME_EMPRESA='$Nome_Empresa'
+            WHERE CNPJ=$CNPJ"); 
+         
+            if(mysqli_query($conexao,$sql)){
+               
+                $_SESSION['NOME']=$_POST["Nome"];
+                $_SESSION['ENDERECO']=$_POST["Endereco"];;
+                $_SESSION['EMAIL']=$_POST["email"];
+                $_SESSION['TELEFONE']=$_POST["Tel"];
+                $_SESSION['NOME_EMPRESA']=$_POST["nome_empresa"];
+
+                echo "<script>alert('dados atualizados com sucesso')</script>";
+            }else{
             
-            echo "erro ao atualizar dados".mysqli_error($conexao);
+                echo "<script>alert('erro ao atualizar dados!!')</script>".mysqli_error($conexao);
+            }
         }
-    
-    }
-    else{
-        echo"<center>Senhas nao conferem,refaça cadastro</center>";
+    }else{
+        echo"<script>alert('Senhas nao conferem,refaça cadastro')</script>";
         //header("location:index.php");
     }
-    ?>
+    include "editarcadastro.php";
+?>
     
