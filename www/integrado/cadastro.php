@@ -56,6 +56,7 @@ form{
 	font-size: 30px;
 	margin-top: 10px;
 	color: #349DD1
+	}
 </style>
 </head>
 <body>
@@ -94,7 +95,7 @@ form{
 </form>
 </fieldset> 
 
-<p id="japossui"><small>Já possui cadastro? <a class="legend" href="login.html">Clique aqui!</a></small></p>
+<p id="japossui"><small>Já possui cadastro? <a class="legend" href="login.php">Clique aqui!</a></small></p>
 
 
     </body>
