@@ -45,5 +45,11 @@
                 }
             }
         }
+        public function atualizar(){
+
+        }
+        public function deletar(){
+
+        }
     }
 ?>
