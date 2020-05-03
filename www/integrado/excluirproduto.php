@@ -60,7 +60,7 @@ if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
         <br>  <br>
         <input type="submit" name="excluir" value="excluir"></input>
     <br>  <br>
-    <a class="texto2" href="telafornecedor.html">Voltar a tela forncedor</a>
+    <a class="texto2" href="telafornecedor.php">Voltar a tela forncedor</a>
     <br>  <br>
     <a class="texto2" href="logout.php">Sair</a>
    
