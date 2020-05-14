@@ -7,11 +7,11 @@ if (!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
     header("location:login.php");
     exit;
 } else {
-    
+
     echo "<center>";
 }
 $produtos = new Produtos();
-$produtos->cnpjvendedor=$_SESSION["CNPJ"];
+$produtos->cnpjvendedor = $_SESSION["CNPJ"];
 $prod = $produtos->listar($conexao);
 ?>
 <html>
@@ -34,17 +34,22 @@ $prod = $produtos->listar($conexao);
                 <td class="texto">valor_referencia</td>
                 <td class="texto">unidadedemedida</td>
             </tr>
-            <?php foreach ($prod as $key => $linha) :?>
-               <!-- echo $value['id'];-->
+            <?php foreach ($prod as $key => $linha) : ?>
+                <!-- echo $value['id']; -->
                 <tr>
-                <td class="texto"><?php echo $linha['cod_item'] ?></td>
-                <td class="texto"><?php echo $linha['descricao'] ?></td>
-                <td class="texto"><?php echo $linha['categoria'] ?></td>
-                <td class="texto"><?php echo $linha['valor_referencia'] ?></td>
-                <td class="texto"><?php echo $linha['unidadedemedida'] ?></td>
-
-            </tr>
-            <?php endforeach;?>
+                <form action="cad_produto.php" method="POST">
+                    <td class="texto" name="cod_item" value="teste"><?php echo $linha['cod_item'] ?></td>
+                    <td class="texto" name="descricao"><?php echo $linha['descricao'] ?></td>
+                    <td class="texto" name="categoria"><?php echo $linha['categoria'] ?></td>
+                    <td class="texto" name="valor_referencia"><?php echo $linha['valor_referencia'] ?></td>
+                    <td class="texto" name="unidadedemedida"><?php echo $linha['unidadedemedida'] ?></td>
+                    <td class="texto">
+                            <input type="hidden" name="id" value=<?=$linha['id']?> />
+                            <button id="tim">Editar</button>
+                    </td>
+                </form>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </fieldset>
     <a class="texto" href="telafornecedor.php">Voltar a tela forncedor</a>

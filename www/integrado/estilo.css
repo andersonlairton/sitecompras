@@ -37,3 +37,14 @@
 	text-transform: none;
 	text-shadow: -9px 4px 5px #1C0BFF;
 }
+#tim {
+    border: 0;
+    padding: 0;
+    display: inline;
+    background: none;
+    text-decoration: underline;
+    color: blue;
+}
+button:hover {
+    cursor: pointer;
+}

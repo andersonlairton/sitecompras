@@ -7,6 +7,10 @@ if (!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
     echo "<center>";
 }
 
+if(!empty($_POST['id'])){
+    echo "teste";
+}
+
 ?>
 <htm>
     <head>
