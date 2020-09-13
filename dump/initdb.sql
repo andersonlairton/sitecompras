@@ -12,7 +12,19 @@ create TABLE `tb_forncedor_npj`(
     `NOME_EMPRESA` varchar(255), 
     `SENHA` varchar(255) not null)
 --------------------
-
+CREATE TABLE `tb_itens` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`cod_item` INT NOT NULL,
+	`descricao` VARCHAR(40) NOT NULL,
+	`categoria` INT NOT NULL,
+	`valor_referencia` VARCHAR(40) NULL DEFAULT NULL,
+	`cnpj_vendedor` INT NULL DEFAULT NULL,
+	`unidadedemedida` VARCHAR(10) NULL DEFAULT NULL,
+	`imagem` BLOB NULL,
+	`Ativo` VARCHAR(50) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+--------------------
 CREATE TABLE IF NOT EXISTS `user_details` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
