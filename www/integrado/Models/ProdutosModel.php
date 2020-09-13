@@ -4,6 +4,7 @@
 
 class Produtos
 {
+    public $id;
     public $descricao;
     public $codigo;
     public $categoria;
@@ -44,6 +45,27 @@ class Produtos
     }
     public function atualizar()
     {
+        include "../config.php";
+
+        $sql = sprintf(
+            "UPDATE tb_itens 
+            SET 
+            cod_item='$this->codigo',
+            descricao='$this->descricao',
+            categoria='$this->categoria',
+            valor_referencia='$this->valorminimo',
+            unidadedemedida='$this->medida'
+            WHERE id='$this->id'"
+        );
+
+        var_dump($sql);
+
+        if (mysqli_query($conexao,$sql)) {
+            return true;
+        }else{
+            throw new Exception("Falha ao atualizar o produto". mysqli_error($conexao), 1);
+            
+        }
     }
     public function deletar()
     {

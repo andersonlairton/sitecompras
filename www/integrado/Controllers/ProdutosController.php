@@ -55,14 +55,40 @@ if (isset($_REQUEST['action'])) {
         }
         public function atualizar(){
             var_dump($_REQUEST);
+            $retorno = [
+                1=>"função iniciada com sucesso"
+            ];
+
+            if (!empty($_REQUEST['id'])) {
+                $prod = new Produtos();
+                //$prod->listarProd($_REQUEST['id']);
+                $prod->id = $_REQUEST['id'];
+                $prod->descricao = $_REQUEST['descricao'];
+                $prod->codigo = $_REQUEST['codigo'];
+                $prod->categoria = $_REQUEST['categoria'];
+                $prod->valorminimo = $_REQUEST['valorminimo'];
+                $prod->cnpjvendedor = $_SESSION['CNPJ'];
+                $prod->medida = $_REQUEST['medida'];
+
+                if ($prod->atualizar()==true) {
+                    echo "<script>
+                        alert('Atualizado com sucesso');
+                        window.location='../meusprodutos.php';
+                        </script>";
+                }else{
+                    echo "<script>
+                        alert('Erro ao atualizar o produto,tente novamente mais tarde');
+                        window.location='../meusprodutos.php';
+                        </script>";
+                }
+                //var_dump($_SESSION);
+            }
         }
         public function deletar(){
 
         }
 
         public function list(){
-            //print_r('chegou na função');
-           // die;
             $retorno = [
                 1=>"metodo iniciado com sucesso",
                 2=>'mais uma posição'
@@ -75,10 +101,8 @@ if (isset($_REQUEST['action'])) {
             }else {
                 $retorno.=[3=>'id invalido'];
             }
-           // print_r($retorno);
            print_r(json_encode($retorno));
-            //return json_encode($retorno);
-            //return $retorno;//json_encode($retorno);
+
         }
     }
 ?>
