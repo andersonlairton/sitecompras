@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 
 class Produtos
 {
@@ -66,5 +66,17 @@ class Produtos
         return $dado;
         mysqli_free_result($result);
         mysqli_close($con);
+    }
+    public function listarProd($id)
+    {
+        include "../config.php";
+        $sql = sprintf("select * from tb_itens where id=%s",$id);
+        $result = mysqli_query($conexao,$sql);
+        $_SESSION['editProd'] = [];
+        if($result){
+            while ($linha = mysqli_fetch_array($result)) {
+                array_push($_SESSION['editProd'],$linha);
+            }
+        }
     }
 }
