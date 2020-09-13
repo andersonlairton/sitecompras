@@ -46,6 +46,8 @@ if(!isset($_SESSION["CNPJ"]) || !isset($_SESSION["Senha"])) {
     </head>
 <body>
     <fieldset id="campo">
+		<a href="Views/Produtos/listProdutos.php" class="texto">Meus produtos(desenvolvimento)</a>
+		<br>
         <a href="meusprodutos.php" class="texto">meus produtos</a>
         <br>  <br>
     <a class="texto"href="cad_produto.php">cadastrar novo produto</a>
