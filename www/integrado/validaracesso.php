@@ -2,7 +2,7 @@
 
     include "config.php";
     $CNPJ=$_POST["CNPJ"]; 
-    $Senha=$_POST["Senha"]; 
+    $Senha=md5($_POST["Senha"]); 
     $SQL = sprintf("SELECT * FROM tb_forncedor_npj WHERE CNPJ = '$CNPJ' AND SENHA = '$Senha'");
     
     $result = mysqli_query($conexao,$SQL) or die(mysqli_error());//comando sql
@@ -26,4 +26,3 @@
         echo"<center>login invalido</center>";
         
     }
-?>
