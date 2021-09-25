@@ -3,6 +3,30 @@
 --
 -- Tabela de exemplo para testes
 --
+USE `sitecompras`;
+CREATE TABLE IF NOT EXISTS `cep` (
+  `ID` int NOT NULL,
+  `LOGRADOURO` text NOT NULL,
+  `LOCALIDADE` text NOT NULL,
+  `UF` tinytext NOT NULL,
+  `IBGE` tinytext NOT NULL,
+  `DDD` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+);
+
+--------------------
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `NAME` text,
+  `CEP_ID` int NOT NULL DEFAULT '0',
+  `SENHA` text NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fkcep` (`CEP_ID`),
+  CONSTRAINT `fkcep` FOREIGN KEY (`CEP_ID`) REFERENCES `cep` (`ID`)
+);
+
+-----------------------
 create TABLE `tb_forncedor_npj`(
 	`CNPJ` int(20) NOT null PRIMARY KEY,
     `NOME` varchar(255) not null,
@@ -10,7 +34,7 @@ create TABLE `tb_forncedor_npj`(
     `EMAIL` varchar(255),
     `TELEFONE` int(9),
     `NOME_EMPRESA` varchar(255), 
-    `SENHA` varchar(255) not null)
+    `SENHA` varchar(255) not null);
 --------------------
 CREATE TABLE `tb_itens` (
 	`id` INT NOT NULL AUTO_INCREMENT,
@@ -23,7 +47,7 @@ CREATE TABLE `tb_itens` (
 	`imagem` BLOB NULL,
 	`Ativo` VARCHAR(50) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
-)
+);
 --------------------
 CREATE TABLE IF NOT EXISTS `user_details` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
