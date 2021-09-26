@@ -14,3 +14,19 @@ function editProd(id){
         }
     });
 }
+
+function newUser() {
+    $.ajax({
+        type: "POST",
+        url: "Controllers/UsuarioController",
+        data: {
+            action:'cadastrar'
+        },
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data);
+        },error:function(){
+            console.log('error 29')
+        }
+    });
+}
