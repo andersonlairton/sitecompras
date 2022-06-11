@@ -14,6 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link href="../../estilo.css" rel="stylesheet" type="text/css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../Usuarios/js/login.js"></script>
 
 </head>
 </head>
@@ -40,7 +44,7 @@
                         <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
                         <!-- <label class="form-check-label" for="exampleCheck1">Clique em mim</label> -->
                     </div>
-                    <button type="button" class="btn btn-primary">Entrar</button>
+                    <button type="button" class="btn btn-primary" id="btn_entrar">Entrar</button>
                 </form>
             </div>
             <div class="col">
