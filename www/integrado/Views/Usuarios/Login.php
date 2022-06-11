@@ -40,7 +40,7 @@
                         <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
                         <!-- <label class="form-check-label" for="exampleCheck1">Clique em mim</label> -->
                     </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <button type="button" class="btn btn-primary">Entrar</button>
                 </form>
             </div>
             <div class="col">
