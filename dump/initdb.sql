@@ -75,3 +75,7 @@ INSERT INTO `user_details` (`user_id`, `username`, `first_name`, `last_name`, `g
 (8, 'daniel53', 'mark', 'mike', 'Male', '299cbf7171ad1b2967408ed200b4e26c', 1),
 (9, 'brooks80', 'morgan', 'maria', 'Female', 'aa736a35dc15934d67c0a999dccff8f6', 1),
 (10, 'morgan65', 'paul', 'miller', 'Female', 'a28dca31f5aa5792e1cefd1dfd098569', 1);
+
+
+-- dados de dev
+INSERT INTO `sitecompras`.`tb_forncedor_npj` (`CNPJ`, `NOME`, `ENDERECO`, `EMAIL`, `TELEFONE`, `NOME_EMPRESA`, `SENHA`) VALUES ('123', 'Teste DEV', 'Teste DEV', 'testedev@mail.com', '1111111', 'DEV', '123');
