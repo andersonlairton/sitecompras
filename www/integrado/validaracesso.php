@@ -3,9 +3,14 @@
     include "config.php";
     $CNPJ=$_POST["CNPJ"]; 
     $Senha=md5($_POST["Senha"]); 
-    $SQL = sprintf("SELECT * FROM tb_forncedor_npj WHERE CNPJ = '$CNPJ' AND SENHA = '$Senha'");
+    $SQL = sprintf("SELECT * FROM tb_forncedor_npj WHERE CNPJ = {$CNPJ} AND SENHA = '{$_POST["Senha"]}'");
     
-    $result = mysqli_query($conexao,$SQL) or die(mysqli_error());//comando sql
+    // verificação na nova tabela de usuarios
+
+    // var_dump($conexao);
+    // var_dump($SQL);
+
+    $result = mysqli_query($conexao,$SQL) or die(mysqli_error($conexao));//comando sql
 
     $dado = mysqli_fetch_assoc($result);
    
