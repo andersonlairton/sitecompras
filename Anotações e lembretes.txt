@@ -4,3 +4,7 @@
     - criação da nova tela de login
     - correcao validar acesso,onde devera olhar se existe na tabela usuario,caso nao exista, copiar dados
     da fornecedor_npj
+12-06-2022
+    - montar painel lateral
+    - montar homepage
+    -configurar header.js

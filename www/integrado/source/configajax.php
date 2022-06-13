@@ -31,9 +31,41 @@ function verificaaction($class= null,$pasta = null)
     // print_r(__LINE__);
     // print_r($_REQUEST);die;
     if (isset($_REQUEST['action'])) {
+        require_once "../{$pasta}/{$_REQUEST['component']}.php";
+
+        // $p = new $class();
+        // var_dump($p);
+        // die;
+
+        // verificando se a classe existe
+        if (class_exists($class)) {
+            // print_r(__LINE__);
+            $c = new $class();
+
+            // verificando se a função desejada existe
+            if (method_exists($c,$_REQUEST['action'])) {
+                // print_r(__LINE__);
+                $funcao = $_REQUEST['action'];
+
+                $f = $c->$funcao($_REQUEST);
+                print_r(__LINE__);
+                print_r($f);
+            } else {
+                $retorno['resposta_status']['status']=0;
+                $retorno['resposta_status']['msg']="Função {$_REQUEST['action']} não localizda,servidor não obteve resposta.Cod:". __LINE__;
+            }
+            
+            // var_dump($c);
+        } else {
+            $retorno['resposta_status']['status']=0;
+            $retorno['resposta_status']['msg']="Classe {$class} não localizada,servidor não obteve resposta.Cod:". __LINE__;
+        }
+
+        die;
         
-        var_dump($_REQUEST);
-        print_r($class);
+        print_r($_REQUEST);
+        print_r("\n".$class."\n");
+        print_r($pasta);
         die;
         // verificando se nao ha falta de dados
         
@@ -46,10 +78,13 @@ function verificaaction($class= null,$pasta = null)
         // } elseif ($_REQUEST['action'] == 'atualizar') {
         //     $u->atualizar();
         // }
+        
     }else {
         $retorno['resposta_status']['status'] = 0;
         $retorno['resposta_status']['msg'] = "Parametro nao localizado,servidor obteve resposta.Cod:" . __LINE__;
     }
+
+    return $retorno;
 }
 
 return $retorno;
